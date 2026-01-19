@@ -409,6 +409,22 @@ main {
     box-shadow: 0 20px 60px rgba(0, 217, 255, 0.3);
     position: relative;
     overflow: hidden;
+    animation: dashboardBorderMorph 8s ease-in-out infinite;
+}
+
+@keyframes dashboardBorderMorph {
+    0%, 100% {
+        border-radius: 24px;
+    }
+    25% {
+        border-radius: 32px 24px 28px 20px;
+    }
+    50% {
+        border-radius: 20px 32px 24px 28px;
+    }
+    75% {
+        border-radius: 28px 20px 32px 24px;
+    }
 }
 
 .server-dashboard::before {
@@ -620,13 +636,18 @@ main {
 
 .section-badge {
     font-size: 3rem;
-    animation: bounce 2s ease-in-out infinite;
+    animation: bounce 2s ease-in-out infinite, iconSpin 10s linear infinite;
     flex-shrink: 0;
 }
 
 @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+@keyframes iconSpin {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
 }
 
 .section-title {
@@ -664,6 +685,16 @@ main {
 .highlight-icon {
     font-size: 3rem;
     flex-shrink: 0;
+    animation: iconRotateHighlight 4s ease-in-out infinite;
+}
+
+@keyframes iconRotateHighlight {
+    0%, 100% { 
+        transform: rotate(0deg) scale(1);
+    }
+    50% { 
+        transform: rotate(15deg) scale(1.1);
+    }
 }
 
 .highlight-content h3 {
@@ -710,8 +741,26 @@ main {
     transition: transform 0.4s ease;
 }
 
+.feature-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-xl);
+    padding: 2px;
+    background: var(--accent-gradient);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
 .feature-card:hover::before {
     transform: scaleX(1);
+}
+
+.feature-card:hover::after {
+    opacity: 1;
 }
 
 .feature-card:hover {
@@ -728,6 +777,16 @@ main {
     font-size: 3. 5rem;
     display: inline-block;
     transition: transform 0.3s ease;
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+    0%, 100% { 
+        transform: translateY(0);
+    }
+    50% { 
+        transform: translateY(-8px);
+    }
 }
 
 .feature-card:hover .feature-icon {
@@ -756,6 +815,24 @@ main {
     font-size: 0.875rem;
     font-weight: 600;
     color: var(--accent-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.3), transparent);
+    animation: badgeShimmer 3s ease-in-out infinite;
+}
+
+@keyframes badgeShimmer {
+    0%, 100% { left: -100%; }
+    50% { left: 100%; }
 }
 
 /* ============================================
@@ -800,6 +877,18 @@ main {
     flex-shrink: 0;
     box-shadow: var(--shadow-glow);
     z-index: 2;
+    animation: numberPulse 2s ease-in-out infinite;
+}
+
+@keyframes numberPulse {
+    0%, 100% { 
+        box-shadow: var(--shadow-glow);
+        transform: scale(1);
+    }
+    50% { 
+        box-shadow: var(--shadow-glow-strong);
+        transform: scale(1.05);
+    }
 }
 
 .layer-content {
@@ -811,6 +900,19 @@ main {
     display: flex;
     gap: var(--spacing-lg);
     transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.layer-content::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.1), transparent);
+    transition: left 0.6s ease;
 }
 
 .layer-content:hover {
@@ -819,9 +921,25 @@ main {
     box-shadow: 0 12px 24px rgba(0, 217, 255, 0.2);
 }
 
+.layer-content:hover::after {
+    left: 150%;
+}
+
 .layer-icon {
     font-size: 3rem;
     flex-shrink: 0;
+    animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+    0%, 100% { 
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% { 
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
 }
 
 . layer-info h3 {
@@ -853,12 +971,29 @@ main {
     color: var(--text-primary);
     font-weight: 500;
     transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-tag::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.2), transparent);
+    transition: left 0.4s ease;
 }
 
 .tech-tag:hover {
     border-color: var(--accent-primary);
     background: rgba(0, 217, 255, 0.2);
     transform: translateY(-2px);
+}
+
+.tech-tag:hover::after {
+    left: 100%;
 }
 
 /* ============================================
@@ -892,8 +1027,23 @@ main {
     transition: transform 0.4s ease;
 }
 
+.arch-card-modern::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
 .arch-card-modern:hover::before {
     transform: scaleY(1);
+}
+
+.arch-card-modern:hover::after {
+    left: 100%;
 }
 
 .arch-card-modern:hover {
@@ -921,6 +1071,16 @@ main {
     font-weight:  900;
     color: white;
     flex-shrink:  0;
+    animation: archNumberGlow 2s ease-in-out infinite;
+}
+
+@keyframes archNumberGlow {
+    0%, 100% { 
+        box-shadow: 0 0 10px rgba(0, 217, 255, 0.4);
+    }
+    50% { 
+        box-shadow: 0 0 20px rgba(0, 217, 255, 0.8);
+    }
 }
 
 .arch-header h3 {
@@ -980,12 +1140,29 @@ main {
     border-radius: var(--radius-lg);
     padding: var(--spacing-lg);
     transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.challenge-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.08), transparent);
+    transition: left 0.5s ease;
 }
 
 .challenge-item:hover {
     border-color:  var(--accent-primary);
     transform: translateX(10px);
     box-shadow: 0 12px 24px rgba(0, 217, 255, 0.2);
+}
+
+.challenge-item:hover::after {
+    left: 100%;
 }
 
 .challenge-number {
@@ -1000,6 +1177,18 @@ main {
     font-weight: 900;
     color:  white;
     flex-shrink: 0;
+    animation: challengeNumberGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes challengeNumberGlow {
+    0%, 100% { 
+        box-shadow: 0 0 10px rgba(124, 58, 237, 0.4);
+        transform: scale(1);
+    }
+    50% { 
+        box-shadow: 0 0 25px rgba(124, 58, 237, 0.8);
+        transform: scale(1.05);
+    }
 }
 
 . challenge-content {
@@ -1009,6 +1198,17 @@ main {
 .challenge-icon-badge {
     font-size: 2. 5rem;
     margin-bottom: var(--spacing-sm);
+    display: inline-block;
+    animation: iconGlow 3s ease-in-out infinite;
+}
+
+@keyframes iconGlow {
+    0%, 100% { 
+        filter: drop-shadow(0 0 0px rgba(0, 217, 255, 0));
+    }
+    50% { 
+        filter: drop-shadow(0 0 8px rgba(0, 217, 255, 0.6));
+    }
 }
 
 .challenge-content h3 {
@@ -1033,6 +1233,24 @@ main {
     font-size: 0.875rem;
     font-weight: 600;
     color: var(--accent-secondary);
+    position: relative;
+    overflow: hidden;
+}
+
+.challenge-tag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.4), transparent);
+    animation: challengeTagShimmer 3s ease-in-out infinite;
+}
+
+@keyframes challengeTagShimmer {
+    0%, 100% { left: -100%; }
+    50% { left: 100%; }
 }
 
 /* ============================================
@@ -1068,12 +1286,17 @@ main {
 .docs-icon-large {
     font-size: 6rem;
     margin-bottom:  var(--spacing-md);
-    animation: float 3s ease-in-out infinite;
+    animation: float 3s ease-in-out infinite, iconRotate 20s linear infinite;
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform:  translateY(-15px); }
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform:  translateY(-15px) rotate(5deg); }
+}
+
+@keyframes iconRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .docs-content h2 {
@@ -1142,6 +1365,20 @@ main {
     padding: var(--spacing-xl);
     text-align: center;
     transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent-gradient);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
 }
 
 .stat-box:hover {
@@ -1150,9 +1387,23 @@ main {
     box-shadow: 0 16px 32px rgba(0, 217, 255, 0.25);
 }
 
+.stat-box:hover::before {
+    transform: scaleX(1);
+}
+
 .stat-icon {
     font-size: 3rem;
     margin-bottom: var(--spacing-sm);
+    animation: iconBounce 2s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+    0%, 100% { 
+        transform: translateY(0) scale(1);
+    }
+    50% { 
+        transform: translateY(-5px) scale(1.05);
+    }
 }
 
 .stat-value {
@@ -1255,12 +1506,40 @@ main {
     padding: var(--spacing-xl);
     margin: var(--spacing-2xl) 0;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.quote-modern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent-gradient);
+    animation: shimmerQuote 2s ease-in-out infinite;
+}
+
+@keyframes shimmerQuote {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
 }
 
 .quote-icon {
     font-size: 4rem;
     margin-bottom:  var(--spacing-md);
     opacity: 0.5;
+    animation: iconPulseQuote 2s ease-in-out infinite;
+}
+
+@keyframes iconPulseQuote {
+    0%, 100% { 
+        transform: scale(1);
+    }
+    50% { 
+        transform: scale(1.1);
+    }
 }
 
 .quote-modern blockquote {
