@@ -294,14 +294,14 @@ main {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    font-size:  1.25rem;
+    font-size: 1.25rem;
     color: var(--text-secondary);
     margin-bottom: var(--spacing-md);
     font-weight: 500;
 }
 
 .greeting-icon {
-    font-size:  1.5rem;
+    font-size: 1.5rem;
     animation: wave 2s ease-in-out infinite;
 }
 
@@ -774,7 +774,7 @@ main {
 }
 
 .feature-icon {
-    font-size: 3. 5rem;
+    font-size: 3.5rem;
     display: inline-block;
     transition: transform 0.3s ease;
     animation: iconFloat 3s ease-in-out infinite;
@@ -945,7 +945,7 @@ main {
 . layer-info h3 {
     font-size: 1.5rem;
     color: var(--text-primary);
-    margin-bottom:  var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
     font-weight: 700;
 }
 
@@ -959,7 +959,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
-    margin-bottom:  var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
 }
 
 .tech-tag {
@@ -1015,7 +1015,7 @@ main {
     overflow: hidden;
 }
 
-. arch-card-modern::before {
+.arch-card-modern::before {
     content: '';
     position: absolute;
     top: 0;
@@ -1056,7 +1056,7 @@ main {
     display: flex;
     align-items: center;
     gap: var(--spacing-md);
-    margin-bottom:  var(--spacing-md);
+    margin-bottom: var(--spacing-md);
 }
 
 .arch-number-circle {
@@ -1196,7 +1196,7 @@ main {
 }
 
 .challenge-icon-badge {
-    font-size: 2. 5rem;
+    font-size: 2.5rem;
     margin-bottom: var(--spacing-sm);
     display: inline-block;
     animation: iconGlow 3s ease-in-out infinite;
@@ -1285,7 +1285,7 @@ main {
 
 .docs-icon-large {
     font-size: 6rem;
-    margin-bottom:  var(--spacing-md);
+    margin-bottom: var(--spacing-md);
     animation: float 3s ease-in-out infinite, iconRotate 20s linear infinite;
 }
 
@@ -1300,7 +1300,7 @@ main {
 }
 
 .docs-content h2 {
-    font-size:  2.5rem;
+    font-size: 2.5rem;
     color: var(--text-primary);
     margin-bottom: var(--spacing-md);
     font-weight: 800;
@@ -1499,7 +1499,7 @@ main {
    QUOTE
    ============================================ */
 
-. quote-modern {
+.quote-modern {
     background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(124, 58, 237, 0.05) 100%);
     border-left: 4px solid var(--accent-primary);
     border-radius: var(--radius-lg);
@@ -1528,7 +1528,7 @@ main {
 
 .quote-icon {
     font-size: 4rem;
-    margin-bottom:  var(--spacing-md);
+    margin-bottom: var(--spacing-md);
     opacity: 0.5;
     animation: iconPulseQuote 2s ease-in-out infinite;
 }
