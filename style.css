@@ -4,23 +4,23 @@
    ============================================ */
 
 : root {
-    /* Colors */
-    --bg-primary: #0a0e27;
-    --bg-secondary:  #151b3d;
-    --bg-card: #1a1f3a;
-    --bg-elevated: #1f2544;
-    --accent-primary: #00d9ff;
-    --accent-secondary: #7c3aed;
+    /* Colors - Inspired by Alessandro Mainardi Portfolio */
+    --bg-primary: #0f1729;
+    --bg-secondary: #151d33;
+    --bg-card: #1a2332;
+    --bg-elevated: #1f2840;
+    --accent-primary: #00d4ff;
+    --accent-secondary: #0ea5e9;
     --accent-success: #10b981;
     --accent-warning: #f59e0b;
     --accent-danger: #ef4444;
-    --accent-gradient: linear-gradient(135deg, #00d9ff 0%, #7c3aed 100%);
-    --accent-gradient-hover: linear-gradient(135deg, #00e5ff 0%, #8b47ff 100%);
-    --text-primary: #e5e7eb;
-    --text-secondary: #9ca3af;
+    --accent-gradient: linear-gradient(135deg, #00d4ff 0%, #0ea5e9 100%);
+    --accent-gradient-hover: linear-gradient(135deg, #00e0ff 0%, #0ea5e9 100%);
+    --text-primary: #f3f4f6;
+    --text-secondary: #b0b8c8;
     --text-muted: #6b7280;
-    --border-color: #2a3150;
-    --border-color-light: #3a4160;
+    --border-color: #2a3550;
+    --border-color-light: #374155;
     
     /* Shadows */
     --shadow-sm:  0 2px 8px rgba(0, 0, 0, 0.2);
@@ -291,13 +291,18 @@ main {
 }
 
 .greeting {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
-    font-size: 1.25rem;
-    color: var(--text-secondary);
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: var(--accent-primary);
     margin-bottom: var(--spacing-md);
     font-weight: 500;
+    padding: 0.5rem 1.25rem;
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
 }
 
 .greeting-icon {
@@ -316,11 +321,9 @@ main {
     font-weight: 900;
     line-height: 1.1;
     margin-bottom: var(--spacing-md);
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--accent-primary);
     letter-spacing: -0.02em;
+    text-shadow: 0 0 40px rgba(0, 212, 255, 0.3);
 }
 
 .hero-role {
@@ -360,11 +363,8 @@ main {
 
 .stat-mini-value {
     font-size: 1.75rem;
-    font-weight:  800;
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-weight: 800;
+    color: var(--accent-primary);
     margin-bottom: 0.25rem;
 }
 
@@ -653,10 +653,7 @@ main {
 .section-title {
     font-size: clamp(2rem, 5vw, 2.75rem);
     font-weight: 800;
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
     line-height: 1.2;
 }
@@ -1408,11 +1405,8 @@ main {
 
 .stat-value {
     font-size: 3rem;
-    font-weight:  900;
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-weight: 900;
+    color: var(--accent-primary);
     margin-bottom: 0.5rem;
 }
 
@@ -1467,26 +1461,29 @@ main {
 }
 
 .btn-primary {
-    background: var(--accent-gradient);
-    color: white;
-    box-shadow: 0 4px 12px rgba(0, 217, 255, 0.25);
+    background: transparent;
+    border: 2px solid var(--accent-primary);
+    color: var(--accent-primary);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
 }
 
 .btn-primary:hover {
-    box-shadow: 0 8px 24px rgba(0, 217, 255, 0.4);
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
     transform: translateY(-3px);
 }
 
 .btn-outline {
     background: transparent;
-    border: 2px solid var(--accent-primary);
-    color: var(--accent-primary);
+    border: 2px solid rgba(0, 212, 255, 0.5);
+    color: var(--text-primary);
 }
 
 .btn-outline:hover {
-    background: var(--accent-gradient);
-    color: white;
-    border-color: transparent;
+    background: transparent;
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
     transform: translateY(-3px);
 }
 
