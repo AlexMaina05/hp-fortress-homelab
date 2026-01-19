@@ -3,425 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HP Fortress - Enterprise Homelab Infrastructure | Alessandro Mainardi</title>
+    <title>HP Fortress - Enterprise Homelab Infrastructure</title>
     <meta name="description" content="Infrastruttura server enterprise-grade homelab con Hyper-V, Docker e architettura Zero Trust by Alessandro Mainardi">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2? family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="HP Fortress - Enterprise Homelab">
-    <meta property="og: description" content="Infrastruttura server enterprise-grade homelab operativa 24/7">
-    <meta property="og: type" content="website">
-    <meta property="og:image" content="https://github.com/AlexMaina05/hp-fortress-homelab/raw/main/docs/preview.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="background-animation"></div>
     
     <header>
         <nav>
-            <a href="#" class="logo">
-                <span class="logo-icon">🏰</span>
-                HP Fortress
-            </a>
+            <a href="#" class="logo">🏰 HP Fortress</a>
             <ul class="nav-links">
                 <li><a href="#overview">Overview</a></li>
-                <li><a href="#architecture">Architettura</a></li>
+                <li><a href="#architettura">Architettura</a></li>
                 <li><a href="#tech-stack">Tech Stack</a></li>
-                <li><a href="#challenges">Challenges</a></li>
                 <li><a href="#docs">Docs</a></li>
             </ul>
-            <button class="mobile-menu-toggle" aria-label="Toggle Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </nav>
     </header>
 
     <main>
         <div class="container">
             <!-- Hero Section -->
-            <section class="hero">
+            <section id="overview" class="hero">
                 <div class="hero-content">
                     <div class="hero-left">
-                        <div class="greeting">
-                            <span class="greeting-icon">🏰</span>
-                            <span>Benvenuto in</span>
-                        </div>
+                        <div class="greeting">🏰 Benvenuto nel</div>
                         <h1 class="hero-title">HP Fortress</h1>
                         <p class="hero-role">Enterprise-Grade Homelab Infrastructure</p>
                         <div class="hero-description">
-                            <p>Infrastruttura server <strong>on-premise ibrida</strong> basata su hardware enterprise ricondizionato. </p>
+                            <p>Infrastruttura server <strong>on-premise ibrida</strong> basata su hardware enterprise ricondizionato.</p>
                             <p>Simula un ambiente di <strong>data center reale</strong> per R&D, hosting e self-learning.</p>
                             <p>Operativo <strong>24/7</strong> con focus su Alta Disponibilità, Sicurezza dei Dati e Segregazione dei Privilegi.</p>
                         </div>
-                        <div class="hero-stats">
-                            <div class="stat-mini">
-                                <div class="stat-mini-value">24/7</div>
-                                <div class="stat-mini-label">Uptime</div>
-                            </div>
-                            <div class="stat-mini">
-                                <div class="stat-mini-value">32GB</div>
-                                <div class="stat-mini-label">RAM</div>
-                            </div>
-                            <div class="stat-mini">
-                                <div class="stat-mini-value">RAID 1</div>
-                                <div class="stat-mini-label">Storage</div>
-                            </div>
-                        </div>
                         <div class="hero-actions">
-                            <a href="./docs/HP_Fortress_TDD.pdf" class="btn btn-primary" target="_blank">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                    <polyline points="14 2 14 8 20 8"></polyline>
-                                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                                    <polyline points="10 9 9 9 8 9"></polyline>
-                                </svg>
-                                Documentazione PDF
-                            </a>
-                            <a href="https://github.com/AlexMaina05/hp-fortress-homelab" class="btn btn-outline" target="_blank">
-                                <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
-                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-. 21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-. 82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-                                </svg>
-                                GitHub Repo
-                            </a>
+                            <a href="./docs/HP_Fortress_TDD.pdf" class="btn btn-primary">📄 Documentazione</a>
+                            <a href="https://github.com/AlexMaina05/hp-fortress-homelab" class="btn btn-outline" target="_blank">GitHub Repo</a>
                         </div>
                     </div>
                     <div class="hero-right">
-                        <div class="server-dashboard">
-                            <div class="dashboard-header">
-                                <div class="dashboard-title">
-                                    <span class="status-indicator active"></span>
-                                    Server Status
-                                </div>
-                                <div class="dashboard-time" id="current-time">00:00:00</div>
-                            </div>
-                            <div class="server-visual">
-                                <div class="server-rack">
-                                    <div class="server-unit" data-status="active">
-                                        <div class="unit-icon">🖥️</div>
-                                        <div class="unit-info">
-                                            <div class="unit-name">Hyper-V Host</div>
-                                            <div class="unit-stat">Windows Server 2025</div>
-                                        </div>
-                                        <div class="unit-led active"></div>
-                                    </div>
-                                    <div class="server-unit" data-status="active">
-                                        <div class="unit-icon">🐳</div>
-                                        <div class="unit-info">
-                                            <div class="unit-name">Docker Engine</div>
-                                            <div class="unit-stat">Ubuntu 24.04 LTS</div>
-                                        </div>
-                                        <div class="unit-led active"></div>
-                                    </div>
-                                    <div class="server-unit" data-status="active">
-                                        <div class="unit-icon">💾</div>
-                                        <div class="unit-info">
-                                            <div class="unit-name">Storage Pool</div>
-                                            <div class="unit-stat">RAID 1 Mirror</div>
-                                        </div>
-                                        <div class="unit-led active"></div>
-                                    </div>
-                                    <div class="server-unit" data-status="active">
-                                        <div class="unit-icon">🔐</div>
-                                        <div class="unit-info">
-                                            <div class="unit-name">Zero Trust Network</div>
-                                            <div class="unit-stat">Tailscale + Cloudflare</div>
-                                        </div>
-                                        <div class="unit-led active"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dashboard-metrics">
-                                <div class="metric">
-                                    <div class="metric-label">CPU</div>
-                                    <div class="metric-bar">
-                                        <div class="metric-fill" style="width: 42%"></div>
-                                    </div>
-                                    <div class="metric-value">42%</div>
-                                </div>
-                                <div class="metric">
-                                    <div class="metric-label">RAM</div>
-                                    <div class="metric-bar">
-                                        <div class="metric-fill" style="width: 68%"></div>
-                                    </div>
-                                    <div class="metric-value">68%</div>
-                                </div>
-                                <div class="metric">
-                                    <div class="metric-label">Storage</div>
-                                    <div class="metric-bar">
-                                        <div class="metric-fill" style="width: 55%"></div>
-                                    </div>
-                                    <div class="metric-value">55%</div>
-                                </div>
-                            </div>
+                        <div class="profile-container">
+                            <div class="server-icon-large">🏰</div>
+                            <div class="profile-decoration"></div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Overview Section -->
-            <section id="overview" class="section">
-                <div class="section-header">
-                    <span class="section-badge">🚀</span>
-                    <div>
-                        <h2 class="section-title">Project Overview</h2>
-                        <p class="section-subtitle">Infrastruttura progettata per operare 24/7</p>
-                    </div>
+            <!-- Hardware Specifications Section -->
+            <section class="specs-section">
+                <div class="spec-card">
+                    <div class="spec-icon">💻</div>
+                    <div class="spec-label">Hardware</div>
+                    <div class="spec-value">HP EliteDesk 800 G4</div>
                 </div>
-                
-                <div class="highlight-banner">
-                    <div class="highlight-icon">⚡</div>
-                    <div class="highlight-content">
-                        <h3>Mission Critical Infrastructure</h3>
-                        <p>Focus su <strong>Alta Disponibilità</strong>, <strong>3-2-1 Backup Strategy</strong> e <strong>Zero Trust Security</strong></p>
-                    </div>
+                <div class="spec-card">
+                    <div class="spec-icon">⚙️</div>
+                    <div class="spec-label">CPU</div>
+                    <div class="spec-value">Intel i5-8500 (6C/6T)</div>
                 </div>
-
-                <div class="feature-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon-wrapper">
-                            <div class="feature-icon">⚡</div>
-                        </div>
-                        <h3>Alta Disponibilità</h3>
-                        <p>Operativo 24/7 con architettura resiliente e ridondanza dei servizi critici per garantire continuità operativa</p>
-                        <div class="feature-badge">99.9% Uptime</div>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon-wrapper">
-                            <div class="feature-icon">🔒</div>
-                        </div>
-                        <h3>Zero Trust Security</h3>
-                        <p>Modello di sicurezza Zero Trust con Tailscale Mesh VPN e Cloudflare Tunnel per accesso controllato</p>
-                        <div class="feature-badge">Enterprise Grade</div>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon-wrapper">
-                            <div class="feature-icon">💾</div>
-                        </div>
-                        <h3>3-2-1 Backup</h3>
-                        <p>Strategia professionale con Veeam:  snapshot orari VSS e backup notturni off-site crittografati</p>
-                        <div class="feature-badge">Data Protection</div>
-                    </div>
+                <div class="spec-card">
+                    <div class="spec-icon">💾</div>
+                    <div class="spec-label">RAM</div>
+                    <div class="spec-value">32GB DDR4</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-icon">🗄️</div>
+                    <div class="spec-label">Storage</div>
+                    <div class="spec-value">WD Red Plus RAID 1</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-icon">🖥️</div>
+                    <div class="spec-label">OS Host</div>
+                    <div class="spec-value">Windows Server 2025</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-icon">🐳</div>
+                    <div class="spec-label">Container</div>
+                    <div class="spec-value">Ubuntu 24.04 LTS</div>
                 </div>
             </section>
 
             <!-- Tech Stack Section -->
-            <section id="tech-stack" class="section tech-section">
+            <section id="tech-stack" class="section">
                 <div class="section-header">
                     <span class="section-badge">🛠️</span>
-                    <div>
-                        <h2 class="section-title">Tech Stack Completo</h2>
-                        <p class="section-subtitle">Tecnologie enterprise-grade per massima affidabilità</p>
-                    </div>
+                    <h2 class="section-title">Tech Stack</h2>
                 </div>
-                
-                <div class="tech-timeline">
-                    <div class="tech-layer">
-                        <div class="layer-number">01</div>
-                        <div class="layer-content">
-                            <div class="layer-icon">💻</div>
-                            <div class="layer-info">
-                                <h3>Hardware Layer</h3>
-                                <div class="tech-tags">
-                                    <span class="tech-tag">HP EliteDesk 800 G4</span>
-                                    <span class="tech-tag">Intel i5-8500 (6C/6T)</span>
-                                    <span class="tech-tag">32GB DDR4</span>
-                                    <span class="tech-tag">WD Red Plus RAID 1</span>
-                                </div>
-                                <p>Hardware enterprise ricondizionato ottimizzato per operare 24/7</p>
-                            </div>
-                        </div>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">💻</div>
+                        <h3>Hardware</h3>
+                        <p>HP EliteDesk 800 G4 • Intel i5-8500 • 32GB DDR4 • WD Red Plus RAID 1</p>
                     </div>
-
-                    <div class="tech-layer">
-                        <div class="layer-number">02</div>
-                        <div class="layer-content">
-                            <div class="layer-icon">⚙️</div>
-                            <div class="layer-info">
-                                <h3>Virtualization & Storage</h3>
-                                <div class="tech-tags">
-                                    <span class="tech-tag">Windows Server 2025 Datacenter</span>
-                                    <span class="tech-tag">Hyper-V</span>
-                                    <span class="tech-tag">Docker</span>
-                                    <span class="tech-tag">Storage Spaces</span>
-                                    <span class="tech-tag">ReFS</span>
-                                </div>
-                                <p>Approccio ibrido:  Hyper-V per infrastruttura + Docker per microservizi</p>
-                            </div>
-                        </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚙️</div>
+                        <h3>Virtualization</h3>
+                        <p>Windows Server 2025 • Hyper-V • Docker • Storage Spaces • ReFS</p>
                     </div>
-
-                    <div class="tech-layer">
-                        <div class="layer-number">03</div>
-                        <div class="layer-content">
-                            <div class="layer-icon">🔐</div>
-                            <div class="layer-info">
-                                <h3>Networking & Security</h3>
-                                <div class="tech-tags">
-                                    <span class="tech-tag">Tailscale Mesh VPN</span>
-                                    <span class="tech-tag">Cloudflare Tunnel</span>
-                                    <span class="tech-tag">Zero Trust</span>
-                                    <span class="tech-tag">ABE (Access-Based Enumeration)</span>
-                                </div>
-                                <p>Sicurezza multi-livello con accesso basato su identità verificata</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tech-layer">
-                        <div class="layer-number">04</div>
-                        <div class="layer-content">
-                            <div class="layer-icon">📱</div>
-                            <div class="layer-info">
-                                <h3>Applications & Services</h3>
-                                <div class="tech-tags">
-                                    <span class="tech-tag">🎬 Plex</span>
-                                    <span class="tech-tag">📸 Immich</span>
-                                    <span class="tech-tag">🎵 Navidrome</span>
-                                    <span class="tech-tag">🌐 IIS</span>
-                                    <span class="tech-tag">🗄️ SQL Server</span>
-                                </div>
-                                <p>Suite completa di servizi per media, backup foto, musica e web hosting</p>
-                            </div>
-                        </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔐</div>
+                        <h3>Security</h3>
+                        <p>Tailscale Mesh VPN • Cloudflare Tunnel • Zero Trust • ABE</p>
                     </div>
                 </div>
             </section>
 
             <!-- Architecture Section -->
-            <section id="architecture" class="section">
+            <section id="architettura" class="section">
                 <div class="section-header">
                     <span class="section-badge">🏗️</span>
-                    <div>
-                        <h2 class="section-title">Architecture Highlights</h2>
-                        <p class="section-subtitle">Design patterns enterprise per massima scalabilità</p>
-                    </div>
+                    <h2 class="section-title">Architettura</h2>
                 </div>
-                
-                <div class="architecture-grid">
-                    <div class="arch-card-modern">
-                        <div class="arch-header">
-                            <div class="arch-number-circle">01</div>
-                            <h3>🔄 Hybrid Virtualization</h3>
-                        </div>
-                        <p class="arch-description">
-                            Approccio ibrido che combina la <strong>robustezza di Hyper-V</strong> per carichi infrastrutturali 
-                            (Domain Controller, SQL Server) con l'<strong>agilità di Docker</strong> per microservizi applicativi.
-                        </p>
+                <div class="arch-grid">
+                    <div class="arch-card">
+                        <div class="arch-number">01</div>
+                        <h3>🔄 Hybrid Virtualization</h3>
+                        <p>Hyper-V per infrastruttura + Docker per microservizi</p>
                         <div class="arch-details">
-                            <div class="arch-detail-item">
-                                <strong>Host Layer</strong>
-                                <span>Windows Server 2025 Datacenter</span>
-                            </div>
-                            <div class="arch-detail-item">
-                                <strong>Guest VMs</strong>
-                                <span>Segregazione ruoli (Identity, App, DB)</span>
-                            </div>
-                            <div class="arch-detail-item">
-                                <strong>Containers</strong>
-                                <span>Docker su Ubuntu Server 24.04 LTS</span>
-                            </div>
+                            <span class="tech-badge">Windows Server 2025</span>
+                            <span class="tech-badge">Ubuntu 24.04 LTS</span>
                         </div>
                     </div>
-
-                    <div class="arch-card-modern">
-                        <div class="arch-header">
-                            <div class="arch-number-circle">02</div>
-                            <h3>🔐 Data Governance</h3>
-                        </div>
-                        <p class="arch-description">
-                            Implementazione di modello <strong>"Zero Trust"</strong> per la rete e <strong>"Least Privilege"</strong> 
-                            per i dati con gestione granulare delle ACL NTFS. 
-                        </p>
+                    <div class="arch-card">
+                        <div class="arch-number">02</div>
+                        <h3>💾 3-2-1 Backup</h3>
+                        <p>Veeam con snapshot VSS orari e backup off-site notturni</p>
                         <div class="arch-details">
-                            <div class="arch-detail-item">
-                                <strong>IAM</strong>
-                                <span>ACL NTFS per segregazione utenti</span>
-                            </div>
-                            <div class="arch-detail-item">
-                                <strong>ABE</strong>
-                                <span>Visibilità condizionale delle risorse</span>
-                            </div>
-                            <div class="arch-detail-item">
-                                <strong>Storage</strong>
-                                <span>RAID 1 + ReFS anti bit-rot</span>
-                            </div>
+                            <span class="tech-badge">RAID 1</span>
+                            <span class="tech-badge">ReFS</span>
                         </div>
                     </div>
-
-                    <div class="arch-card-modern">
-                        <div class="arch-header">
-                            <div class="arch-number-circle">03</div>
-                            <h3>💾 Backup & DR</h3>
-                        </div>
-                        <p class="arch-description">
-                            Strategia <strong>3-2-1</strong> con Veeam Backup & Replication per garantire RPO/RTO ottimali 
-                            e protezione contro disaster scenarios.
-                        </p>
+                    <div class="arch-card">
+                        <div class="arch-number">03</div>
+                        <h3>🔐 Zero Trust Network</h3>
+                        <p>Accesso remoto sicuro senza port forwarding</p>
                         <div class="arch-details">
-                            <div class="arch-detail-item">
-                                <strong>Snapshot VSS</strong>
-                                <span>Orari per recupero immediato</span>
-                            </div>
-                            <div class="arch-detail-item">
-                                <strong>Off-site Backup</strong>
-                                <span>Notturni crittografati</span>
-                            </div>
-                            <div class="arch-detail-item">
-                                <strong>Testing</strong>
-                                <span>Restore periodico per validazione</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Challenges Section -->
-            <section id="challenges" class="section challenges-section">
-                <div class="section-header">
-                    <span class="section-badge">💡</span>
-                    <div>
-                        <h2 class="section-title">Engineering Challenges Solved</h2>
-                        <p class="section-subtitle">Problemi complessi risolti con soluzioni creative</p>
-                    </div>
-                </div>
-                
-                <div class="challenges-list">
-                    <div class="challenge-item">
-                        <div class="challenge-number">01</div>
-                        <div class="challenge-content">
-                            <div class="challenge-icon-badge">💰</div>
-                            <h3>Budget Optimization</h3>
-                            <p>Realizzazione di un nodo server <strong>enterprise-grade con budget hardware &lt; €600</strong>, 
-                            ottimizzando l'uso di licenze Azure Education e hardware ricondizionato certificato.</p>
-                            <div class="challenge-tag">Cost Engineering</div>
-                        </div>
-                    </div>
-
-                    <div class="challenge-item">
-                        <div class="challenge-number">02</div>
-                        <div class="challenge-content">
-                            <div class="challenge-icon-badge">🔧</div>
-                            <h3>Driver Compatibility Hell</h3>
-                            <p>Integrazione di hardware client (<strong>Intel I219-LM NIC</strong>) su OS Server tramite 
-                            forzatura driver e configurazione custom del vSwitch Hyper-V per networking avanzato.</p>
-                            <div class="challenge-tag">Deep Tech</div>
-                        </div>
-                    </div>
-
-                    <div class="challenge-item">
-                        <div class="challenge-number">03</div>
-                        <div class="challenge-content">
-                            <div class="challenge-icon-badge">🌐</div>
-                            <h3>Secure Remote Access</h3>
-                            <p>Esposizione sicura del portfolio web tramite <strong>Cloudflare Tunnel Zero Trust</strong> 
-                            senza necessità di Port Forwarding o IP Pubblico statico. NAT traversal perfetto. </p>
-                            <div class="challenge-tag">Security First</div>
+                            <span class="tech-badge">Tailscale</span>
+                            <span class="tech-badge">Cloudflare</span>
                         </div>
                     </div>
                 </div>
@@ -429,142 +152,33 @@
 
             <!-- Documentation Section -->
             <section id="docs" class="section">
-                <div class="docs-card-hero">
-                    <div class="docs-bg-decoration"></div>
-                    <div class="docs-content">
-                        <div class="docs-icon-large">📚</div>
-                        <h2>Documentazione Tecnica Completa</h2>
-                        <p>Accedi alla documentazione tecnica dettagliata del progetto HP Fortress:  architettura, 
-                        configurazione step-by-step, best practices, troubleshooting e disaster recovery procedures.</p>
-                        <div class="docs-features">
-                            <div class="docs-feature">
-                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                    <polyline points="9 11 12 14 22 4"></polyline>
-                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
-                                </svg>
-                                <span>Diagrammi Architetturali</span>
-                            </div>
-                            <div class="docs-feature">
-                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                    <polyline points="9 11 12 14 22 4"></polyline>
-                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
-                                </svg>
-                                <span>Guide di Configurazione</span>
-                            </div>
-                            <div class="docs-feature">
-                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                    <polyline points="9 11 12 14 22 4"></polyline>
-                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
-                                </svg>
-                                <span>Troubleshooting Procedures</span>
-                            </div>
-                        </div>
-                        <div class="docs-actions">
-                            <a href="./docs/HP_Fortress_TDD.pdf" class="btn btn-primary btn-large" target="_blank">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                    <polyline points="7 10 12 15 17 10"></polyline>
-                                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                                </svg>
-                                Download PDF Completo
-                            </a>
-                            <a href="https://github.com/AlexMaina05/hp-fortress-homelab" class="btn btn-outline btn-large" target="_blank">
-                                <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
-                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-. 38 0-.19-.01-. 82-.01-1.49-2.01.37-2.53-.49-2.69-. 94-.09-.23-.48-. 94-.82-1.13-. 28-.15-.68-.52-. 01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-. 52.28-.87.51-1.07-1.78-. 2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-. 08-.2-.36-1.02.08-2.12 0 0 . 67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 . 27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-. 01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-                                </svg>
-                                Esplora Repository
-                            </a>
-                        </div>
-                    </div>
+                <div class="section-header">
+                    <span class="section-badge">📚</span>
+                    <h2 class="section-title">Documentazione</h2>
+                </div>
+                <div class="docs-card">
+                    <div class="docs-icon">📖</div>
+                    <h3>Technical Design Document</h3>
+                    <p>Documentazione tecnica completa: architettura, configurazione step-by-step, best practices, troubleshooting e disaster recovery procedures.</p>
+                    <a href="./docs/HP_Fortress_TDD.pdf" class="btn btn-primary">Download PDF</a>
                 </div>
             </section>
-
-            <!-- Stats Section -->
-            <section class="section stats-section">
-                <div class="stats-container">
-                    <div class="stat-box">
-                        <div class="stat-icon">⚡</div>
-                        <div class="stat-value">99.9%</div>
-                        <div class="stat-label">Uptime SLA</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-icon">🔐</div>
-                        <div class="stat-value">Zero</div>
-                        <div class="stat-label">Security Incidents</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-icon">💾</div>
-                        <div class="stat-value">3-2-1</div>
-                        <div class="stat-label">Backup Strategy</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-icon">🚀</div>
-                        <div class="stat-value">5+</div>
-                        <div class="stat-label">Services Running</div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Quote -->
-            <div class="quote-modern">
-                <div class="quote-icon">🏰</div>
-                <blockquote>
-                    "Un homelab non è solo hardware e software configurato. <br>
-                    È un <strong>laboratorio di apprendimento continuo</strong>, un <strong>campo di battaglia</strong> 
-                    per testare nuove tecnologie e un <strong>trampolino di lancio</strong> verso l'eccellenza tecnica."
-                </blockquote>
-                <cite>— Alessandro Mainardi</cite>
-            </div>
-
-            <!-- Back to Main Site -->
-            <div class="back-to-site">
-                <a href="https://alexmaina.dev" class="btn btn-outline">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <line x1="19" y1="12" x2="5" y2="12"></line>
-                        <polyline points="12 19 5 12 12 5"></polyline>
-                    </svg>
-                    Torna al Sito Principale
-                </a>
-            </div>
         </div>
     </main>
-    
+
     <footer>
-        <div class="footer-content">
-            <div class="footer-main">
-                <div class="footer-brand">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
                     <h3>🏰 HP Fortress</h3>
                     <p>Enterprise-Grade Homelab Infrastructure</p>
                 </div>
-                <div class="footer-links-group">
-                    <div class="footer-column">
-                        <h4>Navigazione</h4>
-                        <a href="#overview">Overview</a>
-                        <a href="#architecture">Architettura</a>
-                        <a href="#tech-stack">Tech Stack</a>
-                        <a href="#challenges">Challenges</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Risorse</h4>
-                        <a href="./docs/HP_Fortress_TDD.pdf" target="_blank">Documentazione PDF</a>
-                        <a href="https://github.com/AlexMaina05/hp-fortress-homelab" target="_blank">GitHub Repository</a>
-                        <a href="https://alexmaina.dev" target="_blank">Sito Principale</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Contatti</h4>
-                        <a href="mailto:maina@alexmaina.dev">maina@alexmaina.dev</a>
-                        <a href="https://linkedin.com/in/alessandro-mainardi-ab812823b/" target="_blank">LinkedIn</a>
-                        <a href="https://github.com/AlexMaina05" target="_blank">GitHub</a>
-                    </div>
+                <div class="footer-right">
+                    <p>© 2025 Alessandro Mainardi</p>
+                    <p><a href="https://alexmaina.dev">alexmaina.dev</a></p>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2025 HP Fortress - Alessandro Mainardi.  All rights reserved.</p>
-                <p class="footer-tech">Built with modern web technologies • Powered by passion</p>
             </div>
         </div>
     </footer>
-    
-    <script src="script.js"></script>
 </body>
 </html>
