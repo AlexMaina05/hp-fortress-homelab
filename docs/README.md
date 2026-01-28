@@ -9,7 +9,7 @@ L'infrastruttura è progettata per operare 24/7 con un focus su **Alta Disponibi
 
 ## 🛠 Tech Stack
 
-* **Hardware:** HP EliteDesk 800 G4 Tower (i5-8500, 32GB DDR4), WD Red Plus (RAID 1).
+* **Hardware:** HP EliteDesk 800 G4 Tower (i7-8700K, 16GB DDR4), WD Red Plus (RAID 1).
 * **Virtualization:** Windows Server 2025 Datacenter (Hyper-V), Docker.
 * **Storage:** Microsoft Storage Spaces (Software-Defined), ReFS File System.
 * **OS & Services:** Windows Server 2025, Ubuntu Server 24.04 LTS, SQL Server Standard.
