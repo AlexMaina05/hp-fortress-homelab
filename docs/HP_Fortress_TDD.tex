@@ -136,7 +136,7 @@ continuità (UPS).
  * Rischio: In caso di interruzione improvvisa dell'alimentazione, il volume ReFS
  e i database SQL in memoria (Write-Back caching) sono esposti a rischio di
  corruzione.
- * Mitigazione: Il sistema è configur ato per non riavviarsi automaticamente in
+ * Mitigazione: Il sistema è configurato per non riavviarsi automaticamente in
  caso di alimentazione instabile ("Stay Off" dopo Power Loss nel BIOS) per
  evitare danni da sbalzi ripetuti (brownouts), a meno che non sia strettamente
  necessario per l'accesso remoto. Backup frequenti sono l'unica garanzia.
@@ -277,7 +277,7 @@ Misure di sicurezza di base applicate all'Host fisico.
 Encryption & Physical Security:
  * BitLocker Drive Encryption: Attivo su volume di avvio (C:) e volumi dati (D:).
  * Algoritmo: XTS-AES 256-bit (Massima protezione, impatto CPU trascurabile con
- i5-8500).
+ i7-8700k).
  * Key Management:
  - TPM 2.0: Sblocco automatico all'avvio (protezione contro furto disco).
  - Recovery Keys: Salvate su supporto esterno crittografato (USB FIDO2 token) e
@@ -404,7 +404,7 @@ Questa VM funge da motore per i container e monta via SMB le cartelle dati dall'
  - Mount SMB: /mnt/immich $\to$ \\HOST\IMMICH_DATA
  - Data Persistence: /postgres_dump $\to$ \\HOST\APP_DATA\Immich_DB
  - Porta: 2283 (TCP)
- * Cloudflare Tunnel (cloudflar ed):
+ * Cloudflare Tunnel (cloudflared):
  - Scopo: Esposizione sicura dei servizi web (es. Portfolio) su internet senza
  Port Forwarding sul router (Zero Trust Network Access).
 Altri container che saranno presenti:
