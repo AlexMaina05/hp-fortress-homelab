@@ -14,7 +14,7 @@
 \maketitle
 \tableofcontents
 \newpage
-\section{Pagina 1}
+\section{Executive Summary e Indice Operativo}
 \begin{Verbatim}[fontsize=\small]
 PROGETTO "HP FORTRESS" -
 TECHNICAL DOCUMENTATION
@@ -46,10 +46,7 @@ Author: Alessandro Mainardi | Status: Final | Version: 2.0 | Data: 28 gen 2026
  - Lista Utenti (Locali vs AD).
  - Matrice dei Permessi (ACLs): Chi può leggere/scrivere cosa.
  * 4.3 Sharing Protocols: Configurazione SMB/CIFS (Visibility, ABE)
-\end{Verbatim}
 
-\section{Pagina 2}
-\begin{Verbatim}[fontsize=\small]
 5. Virtualization Strategy (Workloads)
  * 5.1 VM Inventory: Lista delle VM pianificate (DC, Linux/Docker,
  SQL(deactivated)).
@@ -78,7 +75,7 @@ Author: Alessandro Mainardi | Status: Final | Version: 2.0 | Data: 28 gen 2026
  * 8.4 Future Roadmap (Possibili Espansioni).
 \end{Verbatim}
 
-\section{Pagina 3}
+\section{1. Project Overview}
 \begin{Verbatim}[fontsize=\small]
 1. Project Overview
 1.1 Scopo del Progetto
@@ -113,10 +110,7 @@ Il sistema deve soddisfare i seguenti requisiti mandatori:
  Web Server per il portfolio personale e progetti universitari.
  * Accesso Remoto Sicuro: Accessibilità ai servizi dall'esterno della rete locale
  senza esposizione diretta di porte critiche (tramite VPN/Tunneling).
-\end{Verbatim}
 
-\section{Pagina 4}
-\begin{Verbatim}[fontsize=\small]
 1.3 Vincoli e Presupposti
 Il progetto deve rispettare i seguenti vincoli tecnici ed economici:
  * Budget Cap: Costo totale dell'hardware (Server + Storage + Memory)
@@ -139,6 +133,10 @@ continuità (UPS).
  caso di alimentazione instabile ("Stay Off" dopo Power Loss nel BIOS) per
  evitare danni da sbalzi ripetuti (brownouts), a meno che non sia strettamente
  necessario per l'accesso remoto. Backup frequenti sono l'unica garanzia.
+\end{Verbatim}
+
+\section{2. Hardware Architecture (Physical Layer)}
+\begin{Verbatim}[fontsize=\small]
 2. Hardware Architecture
 2.1 Bill of Materials (BOM)
 Elenco della componentistica hardware acquisita per la realizzazione del nodo
@@ -149,10 +147,7 @@ Node Motherboard (Q370
  Chipset)
 CPU Intel Core i7-8700k Processing Unit OEM
  Included
-\end{Verbatim}
 
-\section{Pagina 5}
-\begin{Verbatim}[fontsize=\small]
 RAM (Bank 2x8 GB DDR4 2666 MHz Memory OEM
 A) UDIMM (Samsung/OEM) Included
 RAM (Bank 2x8 GB DDR4 2666 MHz Memory Expansion New (se
@@ -185,10 +180,7 @@ Server/Virtualization.
  - Virtualization Technology (VTx): Enabled (Critico per Hyper-V).
  - Virtualization Technology for Directed I/O (VTd): Enabled.
  * Advanced > Built-in Device Options:
-\end{Verbatim}
 
-\section{Pagina 6}
-\begin{Verbatim}[fontsize=\small]
 - Video memory size: 64MB/Minimo (Risparmia RAM di sistema, il
  server è headless).
  * Advanced > Power Management Options:
@@ -204,6 +196,10 @@ Mappatura fisica delle connessioni SATA per facilitare la manutenzione.
  * SATA 2 (Light Blue): WD Red Plus 4TB (Disk 2) -> Bay 3.5" Secondario.
  * M.2 Slot 1: NVMe SSD 512GB (Boot).
  * M.2 Slot 2: NVMe SSD 512GB (Boot).
+\end{Verbatim}
+
+\section{3. Host System Configuration (Hypervisor Layer)}
+\begin{Verbatim}[fontsize=\small]
 3. Host System Configuration (Hypervisor Layer)
 3.1 Operating System
 Configurazione del sistema operativo "Bare Metal". L'Host deve rimanere il più pulito
@@ -218,10 +214,7 @@ possibile, delegando i servizi applicativi alle macchine virtuali.
 3.2 Network Configuration (Physical Host)
 Configurazione della connettività fisica e logica dell'Host.
  - Physical Interface (NIC): Intel Ethernet Connection I219-LM.
-\end{Verbatim}
 
-\section{Pagina 7}
-\begin{Verbatim}[fontsize=\small]
 o Driver Note: Installazione forzata manuale dei driver Intel (versione
  Windows 10/11 64-bit) tramite devmgmt.msc per bypassare il check di
  compatibilità Server OS.
@@ -252,10 +245,7 @@ controller RAID hardware del BIOS è disabilitato/non utilizzato (AHCI Mode).
  o Physical Disks: 2x WD Red Plus 4TB.
  o Type: Primordial Pool.
  - Virtual Disk (LUN):
-\end{Verbatim}
 
-\section{Pagina 8}
-\begin{Verbatim}[fontsize=\small]
 o Name: vDisk_Data
  o Layout: Mirror (2-Way Mirroring - Equivalente RAID 1).
  o Provisioning: Thin (Allocazione dinamica).
@@ -282,14 +272,15 @@ Encryption & Physical Security:
  - Recovery Keys: Salvate su supporto esterno crittografato (USB FIDO2 token) e
  stampate in copia cartacea (Safe Box). MAI salvare le chiavi sul server
  stesso.
+\end{Verbatim}
+
+\section{4. File System & Data Governance}
+\begin{Verbatim}[fontsize=\small]
 4. File System & Data Governance
 4.1 Directory Structure (Volume D:)
 Organizzazione logica del volume dati RAID 1 (D: [DATA]). La struttura è progettata per
 segregare i carichi di lavoro (Media, Backup, Dev) e facilitare la gestione dei permessi.
-\end{Verbatim}
 
-\section{Pagina 9}
-\begin{Verbatim}[fontsize=\small]
 SCHEMA LOGICO:
 D:\
 |-- MEDIA # Repository per contenuti multimediali (Plex)
@@ -325,10 +316,7 @@ User Inventory:
 | u_papa | Local User | Consumer | Accesso RW alla propria cartella, RO ai Media. |
 | u_sorella| Local User | Consumer | Accesso RW alla propria cartella, RO ai Media. |
 | svc_plex | Service Account | Daemon | Utente dedicato per il servizio Plex. |
-\end{Verbatim}
 
-\section{Pagina 10}
-\begin{Verbatim}[fontsize=\small]
 | svc_immich| Service Account | Daemon | Utente dedicato per il mount SMB della VM Linux. |
 Permission Matrix (ACLs):
 Configurazione dei permessi NTFS. L'ereditarietà (Inheritance) viene disabilitata nelle
@@ -354,7 +342,7 @@ Configurazione del protocollo SMB per l'esposizione in rete.
  - Network Discovery: Abilitato su profilo "Private Network".
 \end{Verbatim}
 
-\section{Pagina 11}
+\section{5. Virtualization Strategy (Workloads)}
 \begin{Verbatim}[fontsize=\small]
 5. Virtualization Strategy (Workloads)
 5.1 VM Inventory
@@ -380,10 +368,7 @@ VM-LINUX-01 4 vCPU 4 GB Dynamic (4 GB - 8 50 GB (OS) vSwitch_External
 VM-SQL-01 (non vSwitch_External
 (NON attivo) (NON ATTIVO (NON ATTIVO) (NON ATTIVO)
 ATTIVO)
-\end{Verbatim}
 
-\section{Pagina 12}
-\begin{Verbatim}[fontsize=\small]
 5.3 Services Catalog (Application Layer)
 Dettaglio dei servizi applicativi eseguiti all'interno delle VM.
  A. VM-LINUX-01 (Docker Environment)
@@ -413,10 +398,7 @@ Altri container che saranno presenti:
  B. VM-SQL-01 (Development Lab) (ATTIVO SOLO SE
  NECESSARIO)
 Ambiente Windows Server dedicato allo sviluppo .NET e database.
-\end{Verbatim}
 
-\section{Pagina 13}
-\begin{Verbatim}[fontsize=\small]
 * SQL Server Instance:
  - Edizione: Developer (per test feature Enterprise) o Standard (per test limiti
  produzione).
@@ -426,6 +408,10 @@ Ambiente Windows Server dedicato allo sviluppo .NET e database.
 5.4 Automatic Virtual Machine Activation (AVMA)
 Le VM Windows Server (VM-DC-01, VM-SQL-01) verranno attivate automaticamente tramite la
 licenza Datacenter dell'Host fisico.
+\end{Verbatim}
+
+\section{6. Network & Connectivity}
+\begin{Verbatim}[fontsize=\small]
 6. Network & Connectivity
 6.1 IP Addressing Plan (IPv4)
 Schema di indirizzamento statico per l'infrastruttura server. Il DHCP del router ISP viene
@@ -442,10 +428,7 @@ VM-LINUX-01 LINUX-01.12 Docker Host Plex (32400), Immich (2283),
  Navidrome (4533)
 VM-SQL-01 SQL-01.13 Database / Web SQL (1433)
 6.2 DNS Strategy (Internal & External)
-\end{Verbatim}
 
-\section{Pagina 14}
-\begin{Verbatim}[fontsize=\small]
 Gestione della risoluzione nomi per garantire il funzionamento di Active Directory e l'accesso
 ai servizi.
  - Internal DNS Authority: VM-DC-01 (192.168.1.11).
@@ -481,10 +464,7 @@ Esposizione selettiva dei servizi web pubblici (Portfolio) al mondo internet.
  protetto da Cloudflare Access).
  o https://immich.alexmaina.dev -> Tunnel -> http://192.168.1.12:2283 (Opzionale,
  protetto da Cloudflare Access).
-\end{Verbatim}
 
-\section{Pagina 15}
-\begin{Verbatim}[fontsize=\small]
 6.5 Firewall Rules (Internal Traffic)
 Regole da applicare sui Firewall dei Guest OS (Windows Defender / UFW) per permettere il
 traffico interno.
@@ -495,6 +475,10 @@ traffico interno.
  - VM-SQL-01 (Windows Firewall):
  o Allow TCP 1433 (SQL Server) from 192.168.1.0/24.
  o Allow TCP 80/443 (IIS) from 192.168.1.0/24 e dal IP del Tunnel.
+\end{Verbatim}
+
+\section{7. Backup & Disaster Recovery (DR)}
+\begin{Verbatim}[fontsize=\small]
 7. Backup & Disaster Recovery (DR)
 7.1 Backup Strategy (The 3-2-1 Rule)
 Strategia di protezione dei dati per garantire la Business Continuity domestica e la
@@ -518,10 +502,7 @@ un vero "Air-Gap". Per mitigare il rischio Ransomware:
  per l'utente standard e l'utente Admin quotidiano.
  2. Service Isolation: Solo l'account di servizio SVC_VEEAM (o System) ha permessi di
  scrittura espliciti sulla root del drive USB.
-\end{Verbatim}
 
-\section{Pagina 16}
-\begin{Verbatim}[fontsize=\small]
 3. Veeam Hardening: I file di backup creati sono impostati come Read-Only dopo la
  scrittura ove possibile, o gestiti tramite Veeam Agent con opzione di espulsione
  logica del media post-job (se supportata) per ridurre la finestra di attacco.
@@ -551,10 +532,7 @@ Manuale operativo per il ripristino dei servizi in caso di guasto critico.
 Scenario A: Guasto Disco Fisico (HDD Failure)
 Sintomo: Windows segnala "Degraded" sul Virtual Disk, LED disco spento/ambra (se
 presente), rallentamenti.
-\end{Verbatim}
 
-\section{Pagina 17}
-\begin{Verbatim}[fontsize=\small]
 1. Identificazione: Usare PowerShell Get-PhysicalDisk per identificare il seriale del
  disco guasto (Lost Communication o HealthStatus: Unhealthy).
  2. Sostituzione: Spegnere il server (o hot-swap se supportato). Rimuovere disco
@@ -589,10 +567,7 @@ In caso di fallimento catastrofico del disco OS (C:):
  precedente.
  3. Storage Spaces Import:
  - I dischi dati (HDD) verranno rilevati come "Foreign".
-\end{Verbatim}
 
-\section{Pagina 18}
-\begin{Verbatim}[fontsize=\small]
 - Powershell: Get-StoragePool | Set-StoragePool -IsReadOnly $false
  - Se BitLocker era attivo: Unlock-BitLocker -MountPoint "D:" -RecoveryPassword
  [INSERIRE_CHIAVE_RECUPERO]
@@ -601,6 +576,10 @@ In caso di fallimento catastrofico del disco OS (C:):
  - Importare le VM dalla cartella su D: (Select Folder -> "Import Virtual Machine"
  -> "Register the virtual machine in-place").
  5. Restore: Ripristino Veeam per file mancanti o configurazioni specifiche.
+\end{Verbatim}
+
+\section{8. Conclusions & Critical Takeaways}
+\begin{Verbatim}[fontsize=\small]
 8. Conclusions & Critical Takeaways
 8.1 Executive Summary
 Il progetto "HP Fortress" ha trasformato con successo una workstation aziendale dismessa
@@ -626,10 +605,7 @@ seguenti regole operative:
  tunnel sicuri (Tailscale / Cloudflare Tunnel).
 8.3 Maintenance Schedule (Routine Operativa)
 Il server richiede una manutenzione programmata per garantire stabilità e sicurezza.
-\end{Verbatim}
 
-\section{Pagina 19}
-\begin{Verbatim}[fontsize=\small]
 - Mensile:
  o Installazione Patch di Sicurezza Windows Server (Host e VM Guest). Nota:
  Riavviare prima le VM, poi l'Host.
@@ -652,7 +628,7 @@ Il sistema è progettato per essere scalabile. Upgrade futuri consigliati:
  laboratori Kubernetes o EVE-NG complessi.
 \end{Verbatim}
 
-\section{Pagina 20}
+\section{9. Secure Remote Access & Zero Trust Architecture}
 \begin{Verbatim}[fontsize=\small]
 9. Secure Remote Access & Zero Trust
 Architecture
@@ -694,10 +670,7 @@ pubblico, ma per l'operatività tecnica e il trasferimento dati "raw".
  * Funzionalità Abilitate:
  - MagicDNS: Risoluzione dei nomi host interni.
  - ACLs (Access Control Lists): (Opzionale) Restrizione per impedire a device
-\end{Verbatim}
 
-\section{Pagina 21}
-\begin{Verbatim}[fontsize=\small]
 meno sicuri (es. telefono sorella) di accedere all'Admin VLAN.
 Use Cases Critici (Solo via Tailscale)
  1. RDP (Remote Desktop): Connessione verso l'Host Fisico 192.168.1.10 o la VM SQL
@@ -738,10 +711,7 @@ Servizi potenti o contenenti dati personali che necessitano di una GUI Web.
  può sfruttarla perché non può nemmeno raggiungere la pagina di login
  dell'applicazione senza prima autenticarsi su Cloudflare.
 3. Hybrid Tier (Plex)
-\end{Verbatim}
 
-\section{Pagina 22}
-\begin{Verbatim}[fontsize=\small]
 Il caso specifico dello streaming media.
  * Dominio: plex.alexmaina.dev
  * Configurazione: Plex mal sopporta il caching di Cloudflare.
@@ -773,6 +743,5 @@ In caso di fallimento di VM-LINUX-01 (il gateway di accesso):
  stoppato, da avviare solo in locale o via WoL se supportato). Tuttavia, la vera
  ridondanza è l'accesso fisico.
 \end{Verbatim}
-
 
 \end{document}
