@@ -152,11 +152,11 @@ Accessori & Cavi SATA, viti/grommet, pasta termica & Assembly & New \\
 \subsection{Directory Structure (Volume D:)}
 Struttura logica principale:
 \begin{itemize}
-  \item \texttt{D:\\MEDIA} (Movies, TV\_Shows, Music)
-  \item \texttt{D:\\FAMILY\_BACKUP} (cartelle private per utente)
-  \item \texttt{D:\\DEV} (ISO, VMs, Repos)
-  \item \texttt{D:\\PUBLIC} (scambio temporaneo)
-  \item \texttt{D:\\APP\_DATA} (persistenza applicazioni container)
+  \item \texttt{D:\textbackslash{}MEDIA} (Movies, TV\_Shows, Music)
+  \item \texttt{D:\textbackslash{}FAMILY\_BACKUP} (cartelle private per utente)
+  \item \texttt{D:\textbackslash{}DEV} (ISO, VMs, Repos)
+  \item \texttt{D:\textbackslash{}PUBLIC} (scambio temporaneo)
+  \item \texttt{D:\textbackslash{}APP\_DATA} (persistenza applicazioni container)
 \end{itemize}
 
 \subsection{Identity \& Access Management (IAM)}
@@ -290,8 +290,8 @@ Tooling principale:
 \midrule
 \endhead
 BKP-VMs-Daily & VM DC/LINUX/SQL & Repository USB & Giornaliero 02:00 & 14 giorni \\
-BKP-Files-Crit & \texttt{D:\\FAMILY\_BACKUP}, \texttt{D:\\DEV}, \texttt{D:\\APP\_DATA} & USB + sync cloud & Giornaliero 04:00 & 30 giorni \\
-BKP-Media-Wkly & \texttt{D:\\MEDIA} & USB & Settimanale & 2 versioni \\
+BKP-Files-Crit & \texttt{D:\textbackslash{}FAMILY\_BACKUP}, \texttt{D:\textbackslash{}DEV}, \texttt{D:\textbackslash{}APP\_DATA} & USB + sync cloud & Giornaliero 04:00 & 30 giorni \\
+BKP-Media-Wkly & \texttt{D:\textbackslash{}MEDIA} & USB & Settimanale & 2 versioni \\
 VSS-Snapshots & Volume \texttt{D:} & Shadow storage locale & Ogni 6 ore & Max 10\% \\
 \bottomrule
 \end{longtable}
@@ -301,7 +301,7 @@ VSS-Snapshots & Volume \texttt{D:} & Shadow storage locale & Ogni 6 ore & Max 10
 Identificazione disco degradato, sostituzione fisica, reintroduzione nel pool e avvio processo di repair del virtual disk.
 
 \paragraph{Scenario B: Corruzione OS Host}
-Reinstallazione host su NVMe, riaggancio Storage Spaces, import VM da \texttt{D:\\DEV\\VMs}, riconfigurazione rete/share.
+Reinstallazione host su NVMe, riaggancio Storage Spaces, import VM da \texttt{D:\textbackslash{}DEV\textbackslash{}VMs}, riconfigurazione rete/share.
 
 \paragraph{Scenario C: Ransomware}
 Isolamento immediato rete, tentativo restore da VSS, fallback restore da Veeam, bonifica host e ripristino controllato.
