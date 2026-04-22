@@ -24,7 +24,7 @@ Author: Alessandro Mainardi | Status: Final | Version: 2.0 | Data: 28 gen 2026
  Production).
  * 1.2 Requisiti Funzionali: Cosa deve fare? (NAS, Plex, Backup iOS, SQL Dev
  (temporaneamente disattivato), Virtualization).
- * 1.3 Vincoli: Budget (<600€), Consumi, Rumorosità.
+ * 1.3 Vincoli: Budget (<600EUR), Consumi, Rumorosità.
 2. Hardware Architecture (Physical Layer)
  * 2.1 Bill of Materials (BOM): Lista componenti, costi, link acquisto.
  * 2.2 Specifiche Tecniche: CPU, RAM, Storage Topology.
@@ -109,7 +109,7 @@ Il sistema deve soddisfare i seguenti requisiti mandatori:
  (ACL) per garantire la privacy tra i diversi membri della famiglia.
  * Media Streaming: Transcodifica e streaming di contenuti video (Plex)
  sfruttando l'accelerazione hardware (Intel QuickSync) ove possibile.
- * Development Environment: Hosting di istanze SQL Server (all’occorrenza) e
+ * Development Environment: Hosting di istanze SQL Server (all'occorrenza) e
  Web Server per il portfolio personale e progetti universitari.
  * Accesso Remoto Sicuro: Accessibilità ai servizi dall'esterno della rete locale
  senza esposizione diretta di porte critiche (tramite VPN/Tunneling).
@@ -120,7 +120,7 @@ Il sistema deve soddisfare i seguenti requisiti mandatori:
 1.3 Vincoli e Presupposti
 Il progetto deve rispettare i seguenti vincoli tecnici ed economici:
  * Budget Cap: Costo totale dell'hardware (Server + Storage + Memory)
- rigorosamente inferiore a € 600,00.
+ rigorosamente inferiore a EUR 600,00.
  * Hardware Form Factor: Utilizzo di workstation Enterprise ricondizionate (HP
  EliteDesk Tower) per bilanciare costi, espandibilità e consumi energetici,
  accettando l'assenza di funzionalità server-grade native (IPMI/iLO, ECC RAM,
@@ -236,7 +236,7 @@ o Driver Note: Installazione forzata manuale dei driver Intel (versione
  o Type: External Network.
  o Configuration: "Allow management operating system to share this network
  adapter" = Enabled. (L'Host condivide la porta fisica con le VM).
-DNS Configuration Strategy (Host Physics): Per evitare dipendenze circolari (dove l'Host
+DNS Configuration Strategy (Host Fisico): Per evitare dipendenze circolari (dove l'Host
 attende la VM per risolvere i nomi), la configurazione DNS dell'interfaccia fisica dell'Host
 segue questa priorità:
  1. Primary DNS: 127.0.0.1 (o IP statico di VM-DC-01) - Necessario per l'integrazione in
@@ -292,31 +292,31 @@ segregare i carichi di lavoro (Media, Backup, Dev) e facilitare la gestione dei 
 \begin{Verbatim}[fontsize=\small]
 SCHEMA LOGICO:
 D:\
-├── 📁 MEDIA # Repository per contenuti multimediali (Plex)
-│ ├── 📁 Movies # Film (Nominati secondo convenzione Plex)
-│ ├── 📁 TV_Shows # Serie TV
-│ └── 📁 Music # Libreria Musicale x navidrome
-│
-├── 📁 FAMILY_BACKUP # Target SMB per backup manuale dispositivi iOS/PC
-│ ├── 📁 Mamma # Private folder (RW: Mamma)
-│ ├── 📁 Papa # Private folder (RW: Papa)
-│ ├── 📁 Sorella # Private folder (RW: Sorella)
-│ └── 📁 Alex_Personal # Private folder (RW: Alex)
-│
-├── 📁 DEV # Workspace Sviluppo & Lab
-│ ├── 📁 ISO # Immagini.iso per installazione OS
-│ ├── 📁 VMs # Dischi virtuali Hyper-V (.vhdx)
-│ └── 📁 Repos # Repository Git locali / Codice
-│
-├── 📁 PUBLIC # Cartella di scambio temporaneo (RW: Everyone)
-│
-└── 📁 APP_DATA # NUOVA CARTELLA: Dati persistenti dei Container
- ├── 📁 Navidrome # Database e Cache di Navidrome
- ├── 📁 Immich_DB # (Spostiamo qui il dump di Immich per ordine)
- └── 📁 Plex_Config # (Opzionale: Metadata di Plex)
+|-- MEDIA # Repository per contenuti multimediali (Plex)
+| |-- Movies # Film (Nominati secondo convenzione Plex)
+| |-- TV_Shows # Serie TV
+| `-- Music # Libreria Musicale x navidrome
+|
+|-- FAMILY_BACKUP # Target SMB per backup manuale dispositivi iOS/PC
+| |-- Mamma # Private folder (RW: Mamma)
+| |-- Papa # Private folder (RW: Papa)
+| |-- Sorella # Private folder (RW: Sorella)
+| `-- Alex_Personal # Private folder (RW: Alex)
+|
+|-- DEV # Workspace Sviluppo & Lab
+| |-- ISO # Immagini.iso per installazione OS
+| |-- VMs # Dischi virtuali Hyper-V (.vhdx)
+| `-- Repos # Repository Git locali / Codice
+|
+|-- PUBLIC # Cartella di scambio temporaneo (RW: Everyone)
+|
+`-- APP_DATA # NUOVA CARTELLA: Dati persistenti dei Container
+ |-- Navidrome # Database e Cache di Navidrome
+ |-- Immich_DB # (Spostiamo qui il dump di Immich per ordine)
+ `-- Plex_Config # (Opzionale: Metadata di Plex)
 4.2 Identity & Access Management (IAM)
-Strategia di gestione delle identità. Gli utenti “Consumer” (Famiglia) sono definiti come
-Utenti Locali sull’Host per garantire accesso anche senza Domain Controller.
+Strategia di gestione delle identità. Gli utenti "Consumer" (Famiglia) sono definiti come
+Utenti Locali sull'Host per garantire accesso anche senza Domain Controller.
 User Inventory:
 | Username | Tipo | Ruolo | Note |
 |:--- |:--- |:--- |:--- |
@@ -331,7 +331,7 @@ User Inventory:
 \begin{Verbatim}[fontsize=\small]
 | svc_immich| Service Account | Daemon | Utente dedicato per il mount SMB della VM Linux. |
 Permission Matrix (ACLs):
-Configurazione dei permessi NTFS. L’ereditarietà (Inheritance) viene disabilitata nelle
+Configurazione dei permessi NTFS. L'ereditarietà (Inheritance) viene disabilitata nelle
 sottocartelle di FAMILY_BACKUP per garantire privacy rigorosa.
 Path Principal Access Level Scopo
 D:\MEDIA Everyone Read & Execute Streaming / Visione.
@@ -339,19 +339,19 @@ D:\MEDIA u_alex Modify Gestione libreria.
 D:\FAMILY_BACKUP\Mamma u_mamma Modify Backup foto personale.
 D:\FAMILY_BACKUP\Papa u_papa Modify Backup foto personale.
 D:\FAMILY_BACKUP\Sorella u_sorella Modify Backup foto personale.
-D:\FAMILY_BACKUP\Alex_Pers u_alex Full Control Backup personale.
+D:\FAMILY_BACKUP\Alex_Personal u_alex Full Control Backup personale.
 D:\DEV u_alex Full Control Sviluppo esclusivo.
 D:\IMMICH_DATA svc_immich Modify Scrittura dati da container
  Docker.
 4.3 Sharing Protocols & Configuration
-Configurazione del protocollo SMB per l’esposizione in rete.
+Configurazione del protocollo SMB per l'esposizione in rete.
  - Share Name: FAMILY_BACKUP (Mappa a D:\FAMILY_BACKUP)
  - Share Name: MEDIA (Mappa a D:\MEDIA)
  - Feature Abilitata: Access-Based Enumeration (ABE).
- o Funzione: Gli utenti vedono nell’elenco file solo le cartelle per cui hanno
+ o Funzione: Gli utenti vedono nell'elenco file solo le cartelle per cui hanno
  permessi di lettura. Le cartelle degli altri membri della famiglia risultano
  invisibili.
- - Network Discovery: Abilitato su profilo “Private Network”.
+ - Network Discovery: Abilitato su profilo "Private Network".
 \end{Verbatim}
 
 \section{Pagina 11}
@@ -366,16 +366,16 @@ VM-LINUX-01 Ubuntu Server Docker Host (Media, Medium Gestione servizi
  24.04 LTS Backup, Tunnel) Casa.
 VM-SQL-01 Windows Server SQL Server (Dev/Std) Low Lab Sviluppo &
  2025 DB.
- (all’occorrenza,
+ (all'occorrenza,
  non attivo
  sempre)
 5.2 Resource Allocation Plan
 Strategia di assegnazione risorse CPU/RAM (Host Total: 6 Core / 16 GB RAM).
 VM Name vCPU RAM RAM (Min/Max) Disk (VHDX) Network
  (Startup)
-VM-DC-01 2 vCPU 2 GB Dynamic (2 GB – 4 60 GB (OS) vSwitch_External
+VM-DC-01 2 vCPU 2 GB Dynamic (2 GB - 4 60 GB (OS) vSwitch_External
  GB)
-VM-LINUX-01 4 vCPU 4 GB Dynamic (4 GB – 8 50 GB (OS) vSwitch_External
+VM-LINUX-01 4 vCPU 4 GB Dynamic (4 GB - 8 50 GB (OS) vSwitch_External
  GB)
 VM-SQL-01 (non vSwitch_External
 (NON attivo) (NON ATTIVO (NON ATTIVO) (NON ATTIVO)
@@ -412,7 +412,7 @@ Altri container che saranno presenti:
  rapidi.
  B. VM-SQL-01 (Development Lab) (ATTIVO SOLO SE
  NECESSARIO)
-Ambiente Windows Server dedicato allo sviluppo.NET e Database.
+Ambiente Windows Server dedicato allo sviluppo .NET e database.
 \end{Verbatim}
 
 \section{Pagina 13}
@@ -425,11 +425,11 @@ Ambiente Windows Server dedicato allo sviluppo.NET e Database.
  - Porta: 1433 (TCP).
 5.4 Automatic Virtual Machine Activation (AVMA)
 Le VM Windows Server (VM-DC-01, VM-SQL-01) verranno attivate automaticamente tramite la
-licenza Datacenter dell’Host fisico.
+licenza Datacenter dell'Host fisico.
 6. Network & Connectivity
 6.1 IP Addressing Plan (IPv4)
 Schema di indirizzamento statico per l'infrastruttura server. Il DHCP del router ISP viene
-limitato al range.100 -.254 per lasciare liberi gli indirizzi bassi per i server.
+limitato al range .100 - .254 per lasciare liberi gli indirizzi bassi per i server.
 Subnet: 192.168.1.0/24 (Esempio standard, adattare alla rete reale).
 Gateway: 192.168.1.1 (Router ISP).
 Device / VM Hostname Static Ruolo Porta Servizi Principali
@@ -605,7 +605,7 @@ In caso di fallimento catastrofico del disco OS (C:):
 8.1 Executive Summary
 Il progetto "HP Fortress" ha trasformato con successo una workstation aziendale dismessa
 in un'infrastruttura di virtualizzazione di classe Enterprise. Con un investimento hardware
-inferiore ai € 600, è stato realizzato un sistema capace di erogare servizi che in ambito
+inferiore ai EUR 600, è stato realizzato un sistema capace di erogare servizi che in ambito
 commerciale richiederebbero budget decuplicati. L'architettura ibrida (Windows Server
 Datacenter + Linux Docker) garantisce il perfetto equilibrio tra la necessità didattica di un
 laboratorio Microsoft e la flessibilità dei moderni servizi containerizzati per l'uso domestico.
@@ -702,7 +702,7 @@ meno sicuri (es. telefono sorella) di accedere all'Admin VLAN.
 Use Cases Critici (Solo via Tailscale)
  1. RDP (Remote Desktop): Connessione verso l'Host Fisico 192.168.1.10 o la VM SQL
  192.168.1.13. MAI esporre la porta 3389 via web.
- 2. SMB (File Sharing): Accesso ai volumi \\HV-NODE-01\MEDIA o \DEV per il
+ 2. SMB (File Sharing): Accesso ai volumi \\HV-NODE-01\MEDIA o \\HV-NODE-01\DEV per il
  trasferimento massivo di file. Il protocollo SMB è insicuro su internet pubblico;
  incapsulato in WireGuard (Tailscale) è sicuro.
  3. Database Management: Accesso diretto alla porta 1433 di SQL Server tramite SSMS
