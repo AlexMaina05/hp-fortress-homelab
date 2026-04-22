@@ -46,7 +46,6 @@ Author: Alessandro Mainardi | Status: Final | Version: 2.0 | Data: 28 gen 2026
  - Lista Utenti (Locali vs AD).
  - Matrice dei Permessi (ACLs): Chi può leggere/scrivere cosa.
  * 4.3 Sharing Protocols: Configurazione SMB/CIFS (Visibility, ABE)
-.
 \end{Verbatim}
 
 \section{Pagina 2}
@@ -170,12 +169,12 @@ Accessori Cavi SATA III, Viti HP Grommet, Assembly New
  * Total Memory: 16 GB DDR4 (Dual Channel Config). (+16gb se necessari)
  * Total Storage Raw: ~9 TB (2x512 GB NVMe + 2x4 TB HDD).
  * Network Interface: 1x Intel I219-LM Gigabit Ethernet (Onboard).
- + 2x10 Gbit/s ports board OEM included
+ + 2x 10 Gbit/s ports board OEM included
  * Expansion Slots:
  - 2x PCIe x16 (wired x16/x4) - Disponibili per future espansioni (1
  occupato da scheda 10G
  - 2x PCIe x1 - Disponibili.
- - 2x M.2 2280 PCIe (2 occupato da Boot Drive).
+ - 2x M.2 2280 PCIe (2x occupato da Boot Drive).
 2.3 BIOS & Firmware Configuration (UEFI Settings)
 Configurazione obbligatoria del BIOS HP per abilitare le funzionalità
 Server/Virtualization.
@@ -330,7 +329,7 @@ User Inventory:
 
 \section{Pagina 10}
 \begin{Verbatim}[fontsize=\small]
-| svc_immich| Service Account | Daemon | Utente dedicato per il mount SMB della VM Linux.
+| svc_immich| Service Account | Daemon | Utente dedicato per il mount SMB della VM Linux. |
 Permission Matrix (ACLs):
 Configurazione dei permessi NTFS. L’ereditarietà (Inheritance) viene disabilitata nelle
 sottocartelle di FAMILY_BACKUP per garantire privacy rigorosa.
@@ -648,7 +647,7 @@ Il server richiede una manutenzione programmata per garantire stabilità e sicur
  sono state fatte modifiche all'architettura.
 8.4 Future Roadmap (Possibili Espansioni)
 Il sistema è progettato per essere scalabile. Upgrade futuri consigliati:
- - Networking: Aggiunta scheda di rete 2.5GbE.
+ - Networking: Aggiunta NIC multi-gigabit dedicata (2.5GbE/10GbE) per segmentazione traffico.
  - Compute: Espansione RAM a 64GB (sostituendo i banchi attuali) per ospitare
  laboratori Kubernetes o EVE-NG complessi.
 \end{Verbatim}
