@@ -5,9 +5,9 @@ Progettazione e implementazione di un'infrastruttura server on-premise ibrida, b
 
 L'infrastruttura è progettata per operare 24/7 con un focus su **Alta Disponibilità**, **Sicurezza dei Dati** (3-2-1 Backup Strategy) e **Segregazione dei Privilegi** (IAM).
 
-🔗 **[Scarica la Documentazione Tecnica Completa (PDF)](./docs/HP_Fortress_TDD.pdf)**
+🔗 **[Scarica la Documentazione Tecnica Completa (PDF)](./HP_Fortress_TDD.pdf)**
   
-🧾 **[Versione LaTeX (compatibile Overleaf)](./docs/HP_Fortress_TDD.tex)**
+🧾 **[Versione LaTeX (compatibile Overleaf)](./HP_Fortress_TDD.tex)**
 
 ## 🛠 Tech Stack
 
